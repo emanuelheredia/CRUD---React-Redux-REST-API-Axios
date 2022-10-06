@@ -1,0 +1,79 @@
+{
+  "productos": [
+    {
+      "id": 1,
+      "nombre": "Jugo de Zanahoria",
+      "precio": "31111"
+    },
+    {
+      "id": 2,
+      "nombre": "Jugo de Naranja",
+      "precio": "1"
+    },
+    {
+      "nombre": "Jugo de Naranja",
+      "precio": "300",
+      "id": 3
+    },
+    {
+      "nombre": "Rib Eye 800g",
+      "precio": "200",
+      "id": 4
+    },
+    {
+      "nombre": "Jugo de Fresa",
+      "precio": "200",
+      "id": 5
+    },
+    {
+      "nombre": "Play Station",
+      "precio": 2365,
+      "id": 6
+    },
+    {
+      "nombre": "Arena",
+      "precio": 2365,
+      "id": 7
+    },
+    {
+      "nombre": "Arena",
+      "precio": 2365,
+      "id": 8
+    },
+    {
+      "nombre": "Arena3",
+      "precio": 2365,
+      "id": 9
+    },
+    {
+      "nombre": "Arena3",
+      "precio": 2365,
+      "id": 10
+    },
+    {
+      "nombre": "dwdw",
+      "precio": 654,
+      "id": 11
+    },
+    {
+      "nombre": "dwdw",
+      "precio": 654,
+      "id": 12
+    },
+    {
+      "nombre": "dwdw",
+      "precio": 654,
+      "id": 13
+    },
+    {
+      "nombre": "fwfwf",
+      "precio": 3654,
+      "id": 14
+    },
+    {
+      "nombre": "dwdw",
+      "precio": 65,
+      "id": 15
+    }
+  ]
+}
