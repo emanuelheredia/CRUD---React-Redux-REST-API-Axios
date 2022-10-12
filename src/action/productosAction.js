@@ -6,6 +6,13 @@ import {
 	COMENZAR_DESCARGA_PRODUCTOS,
 	DESCARGA_PRODUCTOS_ERROR,
 	DESCARGA_PRODUCTOS_EXITO,
+	OBTENER_PRODUCTO_ELIMINAR,
+	PRODUCTO_ELIMINADO_EXITO,
+	PRODUCTO_ELIMINADO_ERROR,
+	PRODUCTO_EDITADO_ERROR,
+	PRODUCTO_EDITADO_EXITO,
+	OBTENER_PRODUCTO_EDITAR,
+	COMENZAR_EDICION_PRODUCTO,
 } from "../types";
 import Swal from "sweetalert2";
 
@@ -52,8 +59,8 @@ export const obtenerProductosAction = () => {
 		dispatch(descargarProductos());
 		try {
 			const { data } = await clienteAxios("/productos");
-			console.log(data);
 			dispatch(descargarProductosExitosa(data));
+			console.log(data);
 		} catch (error) {
 			dispatch(descargarProductosError(true));
 		}
@@ -64,10 +71,75 @@ const descargarProductos = () => ({
 	payload: true,
 });
 const descargarProductosExitosa = (productos) => ({
-	type: AGREGAR_PRODUCTO_EXITO,
+	type: DESCARGA_PRODUCTOS_EXITO,
 	payload: productos,
 });
 const descargarProductosError = (error) => ({
-	type: AGREGAR_PRODUCTO_ERROR,
+	type: DESCARGA_PRODUCTOS_ERROR,
+	payload: error,
+});
+
+//Eliminar un producto
+export const eliminarProductoAction = (id) => {
+	return async (dispatch) => {
+		dispatch(obtenerProductoEliminar(id));
+		try {
+			await clienteAxios.delete(`productos/${id}`);
+			dispatch(eliminarProductoExitoso());
+			Swal.fire(
+				"ELiminado!",
+				"El producto se eliminó correctamente",
+				"success",
+			);
+		} catch (error) {
+			dispatch(eliminarProductoError(true));
+		}
+	};
+};
+const obtenerProductoEliminar = (id) => ({
+	type: OBTENER_PRODUCTO_ELIMINAR,
+	payload: id,
+});
+const eliminarProductoExitoso = () => ({
+	type: PRODUCTO_ELIMINADO_EXITO,
+});
+const eliminarProductoError = (error) => ({
+	type: PRODUCTO_ELIMINADO_ERROR,
+	payload: error,
+});
+
+//COLOCAR PRODUCTO EN EDICION
+
+export function obtenerProductoEditar(producto) {
+	return (dispatch) => {
+		dispatch(obtenerProductoEditarAction(producto));
+	};
+}
+
+const obtenerProductoEditarAction = (producto) => ({
+	type: OBTENER_PRODUCTO_EDITAR,
+	payload: producto,
+});
+
+export function editarProductoAction(producto) {
+	return async (dispatch) => {
+		dispatch(editarProducto());
+		try {
+			await clienteAxios.put(`productos/${producto.id}`, producto);
+			dispatch(editarProductoExito(producto));
+		} catch (error) {
+			dispatch(editarProductoError(true));
+		}
+	};
+}
+const editarProducto = () => ({
+	type: COMENZAR_EDICION_PRODUCTO,
+});
+const editarProductoExito = (producto) => ({
+	type: PRODUCTO_EDITADO_EXITO,
+	payload: producto,
+});
+const editarProductoError = (error) => ({
+	type: PRODUCTO_EDITADO_ERROR,
 	payload: error,
 });
