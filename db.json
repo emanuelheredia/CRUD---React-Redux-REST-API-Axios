@@ -1,14 +1,9 @@
 {
   "productos": [
     {
-      "nombre": "real timess",
-      "precio": "2593216",
+      "nombre": "zanahoria",
+      "precio": "350",
       "id": 1
-    },
-    {
-      "nombre": "egeqg actualizada",
-      "precio": 359,
-      "id": 2
     }
   ]
 }
